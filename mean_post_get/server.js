@@ -431,13 +431,17 @@ app.post('/removeRecord',function(req, res){
   
   removeRecord(colectionMongoDb,recordRemoveClient)
     .then(function(result){
-      getRecord()
-        .then(function(items){
-          res.setHeader('content-type', 'application/json');
-          //res.json({ 'responseAddRecord': ' record ' + recordAddClient + ' added to mongodb', 'newItems':items });
-          res.json({ 'responseAction': items });
-          res.end();
-        });
+      
+      return getRecord();
+      
+    })
+    .then(function(items){
+      
+      res.setHeader('content-type', 'application/json');
+      //res.json({ 'responseAddRecord': ' record ' + recordAddClient + ' added to mongodb', 'newItems':items });
+      res.json({ 'responseAction': items });
+      res.end();       
+        
     });
   
   
