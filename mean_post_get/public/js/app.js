@@ -190,4 +190,9 @@ meanApp.controller('listCtrl', function($http, mongoDb) {
     }
 
 
+    self.getInitItem = function(item){debugger;
+      return item;
+    }
+
+
 });
