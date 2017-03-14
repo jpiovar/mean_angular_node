@@ -1,7 +1,7 @@
 <div  ng-controller="listCtrl as list" ng-init="list.getAllDataDb()">
 
 
-    
+
     <div class="container">
       <h2>List of actions</h2>
       <br/>
@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-default" ng-click="list.addRecord()">Add record</button>
       </div>
     </form>
-    
+
     <br/>
     <table class="table table-hover">
       <thead>
@@ -23,18 +23,19 @@
       </thead>
       <tbody>
         <tr ng-repeat="item in list.items">
-          <td>{{item.item}}</td>
+          <td><input type="text" name="item" ng-model="item.item">{{item.item}}</td>
           <td>
             <button type="button" class="btn btn-default" ng-click="list.removeRecord(item.id)">Remove</button>
+            <button type="button" class="btn btn-default" ng-click="list.updateRecord(item.id,item.item)">Update</button>
           </td>
-          
+
         </tr>
       </tbody>
     </table>
-    
-    
-    
-    
+
+
+
+
     <p ng-init="list.responseAction=''">
       response post {{ list.responseAction }}
     </p>

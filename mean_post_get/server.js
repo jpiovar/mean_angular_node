@@ -17,7 +17,7 @@ var p = new Promise(function(resolve,reject){
 
 var p1 = new Promise(function(resolve,reject){
     var a = "oooookkkkk";
-    setTimeout(function(){      
+    setTimeout(function(){
         resolve(a);
     },5000);
 });
@@ -49,58 +49,58 @@ var colectionMongoDb = 'Record';
 
 
 var addRecordMongo = function(collectionName,record,res){
-  
+
     MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
-     
+
 	     if(err) throw err;
-            
+
 	     db.collection(collectionName, function (err, collection) {
 	        collection.insert({ item: record }, function(err, r) {
-		          db.close();	
+		          db.close();
               getRecord(res);
 	        });
 	     });
-    });  
-    
-    
+    });
+
+
 }
 
 
 
 
 function getRecordMongo(collectionName){
-  
+
   MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
-     
+
     if(err) throw err;
-            
+
     db.collection('Record', function (err, collection) {
       collection.find().toArray(function(err, items) {
         if(err) throw err;
         console.log('service items from mongodb '+items);
-        
-        setTimeout(function(){ 
+
+        setTimeout(function(){
           return items;
         },5000);
         db.close();
         /*
-        res.setHeader('content-type', 'application/json');      
+        res.setHeader('content-type', 'application/json');
         res.json({ 'responseAction': result });
         */
       });
     });
-  }); 
-  
+  });
 
-  
+
+
   //db.collection('Record', function (err, collection) {
-  //     
+  //
   //     collection.find().toArray(function(err, items) {
-  //         if(err) throw err;    
+  //         if(err) throw err;
   //         console.log(items);
-  //         mongoMessage = items.length;            
+  //         mongoMessage = items.length;
   //     });
-  //     
+  //
   //   });
 }
 
@@ -109,59 +109,59 @@ function getRecordMongo(collectionName){
 
 
 // MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
-//    
+//
 //   if(err) throw err;
-//     
-//        
+//
+//
 //   db.collection('Record', function (err, collection) {
-//           
+//
 //     collection.insert({ id: 1, firstName: 'Steve', lastName: 'Jobs' });
 //     collection.insert({ id: 2, firstName: 'Bill', lastName: 'Gates' });
 //     collection.insert({ id: 3, firstName: 'James', lastName: 'Bond' });
-//      
-//   });   
-//          
-//  
-//   db.collection('Record').count(function (err, count) {
-//     
-//     if (err) throw err;             
-//     console.log('Total Rows: ' + count);
-//     
+//
 //   });
-//          
-//          
+//
+//
+//   db.collection('Record').count(function (err, count) {
+//
+//     if (err) throw err;
+//     console.log('Total Rows: ' + count);
+//
+//   });
+//
+//
 //   db.collection('Record', function (err, collection) {
-//     
+//
 //     collection.update({id: 1}, { $set: { firstName: 'James', lastName: 'Gosling'} }, {w:1}, function(err, result){
-//       if(err) throw err;    
+//       if(err) throw err;
 //       console.log('Document Updated Successfully');
 //     });
-//     
+//
 //   });
-//   
-//   
+//
+//
 //   db.collection('Record', function (err, collection) {
-//     
-//     collection.remove({id:2}, {w:1}, function(err, result) {        
-//         if(err) throw err;            
+//
+//     collection.remove({id:2}, {w:1}, function(err, result) {
+//         if(err) throw err;
 //         console.log('Document Removed Successfully');
 //     });
-//     
+//
 //   });
-//     
-//     
+//
+//
 //   db.collection('Record', function (err, collection) {
-//     
+//
 //     collection.find().toArray(function(err, items) {
-//         if(err) throw err;    
+//         if(err) throw err;
 //         console.log(items);
-//         mongoMessage = items.length;            
+//         mongoMessage = items.length;
 //     });
-//     
+//
 //   });
-//          
-//      
-//                 
+//
+//
+//
 // });
 
 
@@ -192,14 +192,14 @@ app.use( express.static( __dirname + '/node_modules'));
 
 
 app.get('*',function(req, res){
-       
+
      //res.sendFile( __dirname + "/" + "index.html" );
      res.sendFile( __dirname + '/public/index.html' );
 });
 
 /*
 app.get('/city',function(req, res){
-       
+
      //res.sendFile( __dirname + "/" + "index.html" );
      res.sendFile( __dirname + '/public/index.html' );
 });
@@ -213,7 +213,7 @@ app.post('/add',function(req, res){
   var thing = req.body.thingInput;
   //var thingDoc = new thingModel({thing: thing});
   console.log(thing);
-  
+
   //res.setHeader('content-type', 'application/json');
   //res.json({ a: 1 });
   //res.send(thing);
@@ -227,7 +227,7 @@ app.post('/townAdd',function(req, res){
   var tic = req.body.townItemClient;
 
   console.log(tic);
-  
+
   res.setHeader('content-type', 'application/json');
   res.json({ townA: 'server town response' });
 
@@ -249,32 +249,32 @@ app.post('/townAdd',function(req, res){
 var getRecord = function() {
   return new Promise(function(resolve, reject) {
     MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
-  
-      if(err) { 
-        reject(err); return; 
+
+      if(err) {
+        reject(err); return;
       }
-            
+
       db.collection('Record', function (err, collection) {
-  
+
         collection.find().toArray(function(err, items) {
-  
-          if(err) { 
-            reject(err); return; 
+
+          if(err) {
+            reject(err); return;
           }
-          
+
           console.log('service items from mongodb '+items);
           console.log('pr next'+items);
           resolve(items);
           db.close();
-  
+
         });
-  
+
       });
-  
+
     });
-  
+
   });
-  
+
 };
 
 
@@ -293,58 +293,58 @@ var addRecord = function(collectionName,record){
   return new Promise(function(resolve, reject) {
 
     MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
-              
+
 	     if(err){
          reject(err);
          return;
        }
-           
-         
+
+
        db.collection(collectionName, function (err, collection) {
-         
-         
+
+
           collection.find().toArray(function(err, items) {
-   
-            if(err) { 
-              reject(err); return; 
+
+            if(err) {
+              reject(err); return;
             }
-           
+
             console.log('service items from mongodb '+items);
             console.log('pr next'+items);
 
-            
+
             var maxRecord = getMaxObjArray(items);
-            console.log(maxRecord);  
-              
+            console.log(maxRecord);
+
             collection.insert({ id: maxRecord+1, item: record }, function(err, result) {
-              
-              if(err) { 
-                reject(err); 
-                return;            
+
+              if(err) {
+                reject(err);
+                return;
               }
-              
-              db.close();	            
+
+              db.close();
               resolve(result);
-              
-  	        });  
-              
+
+  	        });
+
           });
-         
-          
-          
+
+
+
 	     });
-         
-         
-         
-         
-      
-            
-	     
-       
-    });  
-    
+
+
+
+
+
+
+
+
+    });
+
   });
-    
+
 }
 
 
@@ -354,33 +354,73 @@ var removeRecord = function(collectionName,recordId){
   return new Promise(function(resolve, reject) {
 
     MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
-     
+
 	     if(err){
          reject(err);
          return;
        }
-            
+
 	     db.collection(collectionName, function (err, collection) {
-         
-	        collection.remove({id:recordId}, {w:1}, function(err, result) {        
-            if(err) { 
-              reject(err); 
-              return;            
+
+	        collection.remove({id:recordId}, {w:1}, function(err, result) {
+            if(err) {
+              reject(err);
+              return;
             }
             console.log('Removed Successfully');
-            
-            db.close();	            
+
+            db.close();
             resolve(result);
-            
+
           });
-          
+
 	     });
-       
-    });  
-    
+
+    });
+
   });
-    
+
 }
+
+
+
+
+var updateRecord = function(collectionName,record){
+
+  return new Promise(function(resolve, reject) {
+
+    MongoClient.connect("mongodb://localhost:27017/mean", function (err, db) {
+
+	     if(err){
+         reject(err);
+         return;
+       }
+
+	     db.collection(collectionName, function (err, collection) {
+
+
+         collection.update({id: record.id}, { $set: { item: record.val} }, {w:1},
+          function(err, result){
+            if(err) {
+              reject(err);
+              return;
+            }
+            console.log('Updated Successfully');
+
+            db.close();
+            resolve(result);
+
+          });
+
+	     });
+
+    });
+
+  });
+
+}
+
+
 
 
 app.post('/getRecord',function(req, res){
@@ -391,7 +431,7 @@ app.post('/getRecord',function(req, res){
     res.setHeader('content-type', 'application/json');
     res.json({ 'responseAction': items });
     res.end();
-  });    
+  });
 
 });
 
@@ -400,11 +440,11 @@ app.post('/getRecord',function(req, res){
 app.post('/addRecord',function(req, res){
   var actionClient = req.body.action;
   console.log(actionClient);
-  
+
   var recordAddClient = req.body.recordAddClient;
 
   console.log(recordAddClient);
-  
+
   addRecord(colectionMongoDb,recordAddClient)
     .then(function(result){
       getRecord()
@@ -415,38 +455,63 @@ app.post('/addRecord',function(req, res){
           res.end();
         });
     });
-  
-  
-  
-  
+
+
+
+
 });
 
 app.post('/removeRecord',function(req, res){
   var actionClient = req.body.action;
   console.log(actionClient);
-  
+
   var recordRemoveClient = req.body.recordRemoveClient;
 
   console.log(recordRemoveClient);
-  
+
   removeRecord(colectionMongoDb,recordRemoveClient)
     .then(function(result){
-      
+
       return getRecord();
-      
+
     })
     .then(function(items){
-      
+
       res.setHeader('content-type', 'application/json');
       //res.json({ 'responseAddRecord': ' record ' + recordAddClient + ' added to mongodb', 'newItems':items });
       res.json({ 'responseAction': items });
-      res.end();       
-        
+      res.end();
+
     });
-  
-  
-  
-  
+
+});
+
+
+
+
+app.post('/updateRecord',function(req, res){
+  var actionClient = req.body.action;
+  console.log(actionClient);
+
+  var recordUpdateClient = req.body.recordUpdateClient;
+
+  console.log(recordUpdateClient);
+
+  updateRecord(colectionMongoDb,recordUpdateClient)
+    .then(function(result){
+
+      return getRecord();
+
+    })
+    .then(function(items){
+
+      res.setHeader('content-type', 'application/json');
+      //res.json({ 'responseAddRecord': ' record ' + recordAddClient + ' added to mongodb', 'newItems':items });
+      res.json({ 'responseAction': items });
+      res.end();
+
+    });
+
 });
 
 
