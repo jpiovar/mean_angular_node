@@ -196,3 +196,14 @@ meanApp.controller('listCtrl', function($http, mongoDb) {
 
 
 });
+
+meanApp.directive('todoLine',function(){
+  return {
+    restrict : "A",
+    scope: false,
+    transclude: true,
+    //templateUrl: 'todoLineTemplate.html'
+    template: '<td>{{item.item}}</td><td><button type="button" class="btn btn-default" ng-click="list.removeRecord(item.id)">Remove</button></td>'    
+  }
+});
+

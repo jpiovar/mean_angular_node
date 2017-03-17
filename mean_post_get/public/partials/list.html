@@ -22,12 +22,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="item in list.items">
+
+        <!-- <tr ng-repeat="item in list.items">
           <td><input type="text" name="item" ng-model="item.item"><span ng-init="listItem[$index]=list.getInitItem(item.item)">current DB value: {{listItem[$index]}}</span></td>
           <td>
             <button type="button" class="btn btn-default" ng-click="list.removeRecord(item.id)">Remove</button>
             <button type="button" class="btn btn-default" ng-click="list.updateRecord(item.id,item.item)">Update</button>
-          </td>
+          </td> -->
+
+
+        <tr ng-repeat="item in list.items" todo-line>
+          <!--<td>{{item.item}}</td>
+          <td>
+            <button type="button" class="btn btn-default" ng-click="list.removeRecord(item.id)">Remove</button>
+          </td-->
+          <td>directive content will replace this</td>
 
         </tr>
       </tbody>
