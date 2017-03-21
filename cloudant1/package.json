@@ -1,0 +1,28 @@
+{
+  "name": "mean_post_get",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-route": "^1.6.2",
+    "body-parser": "^1.16.0",
+    "bootstrap": "^3.3.7",
+    "cloudant": "^1.7.1",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "gyp": "^0.5.0",
+    "jquery": "^3.1.1",
+    "kerberos": "0.0.22",
+    "mongodb": "^2.2.24",
+    "nano": "^6.2.0",
+    "native-promise-only": "^0.8.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jp",
+  "license": "ISC"
+}

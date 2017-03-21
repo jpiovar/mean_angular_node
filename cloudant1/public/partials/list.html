@@ -1,0 +1,52 @@
+<div  ng-controller="listCtrl as list" ng-init="list.getAllDataDb()">
+
+
+
+    <div class="container">
+      <h2>List of actions</h2>
+      <br/>
+    <form>
+      <div class="form-group">
+        <label for="record">Record:</label>
+        <input type="text" class="form-control" id="record" ng-model="list.recordInput">
+        <button type="button" class="btn btn-default" ng-click="list.addRecord()">Add record</button>
+      </div>
+    </form>
+
+    <br/>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Record item</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- <tr ng-repeat="item in list.items">
+          <td><input type="text" name="item" ng-model="item.item"><span ng-init="listItem[$index]=list.getInitItem(item.item)">current DB value: {{listItem[$index]}}</span></td>
+          <td>
+            <button type="button" class="btn btn-default" ng-click="list.removeRecord(item.id)">Remove</button>
+            <button type="button" class="btn btn-default" ng-click="list.updateRecord(item.id,item.item)">Update</button>
+          </td> -->
+
+
+        <tr ng-repeat="item in list.items" todo-line>
+          <!--<td>{{item.item}}</td>
+          <td>
+            <button type="button" class="btn btn-default" ng-click="list.removeRecord(item.id)">Remove</button>
+          </td-->
+          <td>directive content will replace this</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+    <p ng-init="list.responseAction=''">
+      response post {{ list.responseAction }}
+    </p>
+  </div>
+</div>

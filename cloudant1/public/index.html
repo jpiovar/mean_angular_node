@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="meanApp">
+<head>
+  <meta charset="UTF-8">
+  <title>mean simple</title>
+  <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css">
+  <script src="/jquery/dist/jquery.js"></script>  
+  <script src="/angular/angular.js"></script>
+  <script src="/angular-route/angular-route.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/js/app.js"></script>
+</head>
+
+<body ng-controller="appCtrl as apc">
+  
+  
+  
+<p>
+  <a href="/">Home</a>
+  <a href="city">City</a>
+  <a href="town">Town</a>
+  <a href="list">list</a>
+</p>
+
+
+
+  <div ng-view></div>
+</body>
+
+
+</html>
