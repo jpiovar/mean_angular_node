@@ -29,16 +29,63 @@ db.list(function(err, data){
    console.log('db1',data);
 });
 
-db.insert({ crazy: true }, 'rabbit', function(err, body, header) {
+// insert
+db.insert({ crazy: true }, 'rabbit1', function(err, body, header) {
   if (err) {
     return console.log('[db.insert] ', err.message);
   }
 
-  console.log('You have inserted the rabbit.');
+  console.log('You have inserted the rabbit1.');
   console.log(body);
 });
 
 
+// get data
+db.get("rabbit", function(err, data) {
+  console.log("Found rabit:", data);
+});
+  
+
+// update
+db.get("rabbit", function(err, data) {
+  if(!err){ 
+    var _revId = data._rev;  
+    var item = {
+       'firstname' : 'my',
+       'secondname' : 'name1111112222333344666778888999',
+       '_id': 'rabbit',
+       '_rev': _revId
+    };
+
+    db.insert(item, function(err, body) {});  
+  } 
+});
+
+/*
+// remove / delete
+db.get("rabbit", function(err, data) {
+  if(!err){ 
+    var _revId = data._rev;  
+    db.destroy("rabbit", "13-06fd85a1deea38ea68f04be57b5f6a3d", function(err, body) {
+      if (!err) {
+        console.log("Successfully deleted doc", "rabbit");
+      } else if(err){
+        console.log('ERROR: %s', err);
+      } 
+      
+    }); 
+  } 
+});
+*/
+
+db.destroy('rabbit', '13-06fd85a1deea38ea68f04be57b5f6a3d', function(err, body) {
+  if (!err) {
+    console.log("Successfully deleted doc", "rabbit");
+  } else if(err){
+    console.log('ERROR: %s', err);
+  } 
+  
+}); 
 
 
 
