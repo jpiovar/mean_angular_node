@@ -63,10 +63,10 @@ db.get("rabbit", function(err, data) {
 
 
 // remove / delete
-db.get("rabbit", function(err, data) {
+db.get("rabbit1", function(err, data) {
   if(!err){ 
     var _revId = data._rev;  
-    db.destroy("rabbit", "13-06fd85a1deea38ea68f04be57b5f6a3d", function(err, body) {
+    db.destroy("rabbit1", _revId, function(err, body) {
       if (!err) {
         console.log("Successfully deleted doc", "rabbit");
       } else if(err){
