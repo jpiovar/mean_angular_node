@@ -61,7 +61,7 @@ db.get("rabbit", function(err, data) {
   } 
 });
 
-/*
+
 // remove / delete
 db.get("rabbit", function(err, data) {
   if(!err){ 
@@ -76,8 +76,8 @@ db.get("rabbit", function(err, data) {
     }); 
   } 
 });
-*/
 
+/*
 db.destroy('rabbit', '13-06fd85a1deea38ea68f04be57b5f6a3d', function(err, body) {
   if (!err) {
     console.log("Successfully deleted doc", "rabbit");
@@ -86,7 +86,7 @@ db.destroy('rabbit', '13-06fd85a1deea38ea68f04be57b5f6a3d', function(err, body) 
   } 
   
 }); 
-
+*/
 
 
 
